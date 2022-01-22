@@ -1,18 +1,18 @@
 const init = () => {
-  const inputForm = document.querySelector('form');
-  inputForm.addEventListener('submit', (e) => {
+  document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault()
-    const input = document.querySelector('input#searchByID')
+    const input = document.getElementById('searchByID')
     console.log(input.value)
+
     fetch(`http://localhost:3000/movies/${input.value}`)
-    .then(res => res.json())
-    .then(data => {
-      const title = document.querySelector('h4')
-      title.textContent = data.title
-      const summary = document.querySelector('section#movieDetails p')
-      summary.textContent = data.summary
-    })
-    inputForm.reset()
+   .then(res => res.json())
+   .then(data => {
+     const title = document.querySelector('section#movieDetails h4')
+     const summary = document.querySelector('section#movieDetails p')
+     debugger;
+     title.textContent = data.title;
+     summary.textContent = data.summary
+   }) 
   })
 }
 
